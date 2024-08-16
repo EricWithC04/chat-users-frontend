@@ -1,0 +1,33 @@
+.navbar {
+    height: 100px;
+    width: 100%;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-elements {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-elements ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-elements ul li {
+    margin: 0 10px;
+}
+
+.navbar-elements ul li a {
+    text-decoration: none;
+    color: black;
+}
