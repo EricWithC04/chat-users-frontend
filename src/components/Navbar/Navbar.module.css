@@ -25,9 +25,16 @@
 
 .navbar-elements ul li {
     margin: 0 10px;
+    background-color: #888888;
+    padding: 15px;
+    border-radius: 5px;
 }
 
-.navbar-elements ul li a {
-    text-decoration: none;
-    color: black;
+.navbar-elements ul li:hover {
+    cursor: pointer;
+    background-color: #666666;
+}
+
+.navbar-elements ul li p {
+    color: white;
 }

@@ -1,7 +1,10 @@
-import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './Navbar.module.css'
 
 const Navbar = () => {
+
+    const navigate = useNavigate()
+
     return (
         <div className={styles.navbar}>
             <div className={styles["navbar-elements"]}>
@@ -9,11 +12,11 @@ const Navbar = () => {
                     <img src="" alt="nothing" />
                 </div>
                 <ul>
-                    <li>
-                        <a href="/login">Iniciar Sesión</a>
+                    <li onClick={() => navigate("/login")}>
+                        <p>Iniciar Sesión</p>
                     </li>
-                    <li>
-                        <a href="/register">Registrarse</a>
+                    <li onClick={() => navigate("/register")}>
+                        <p>Registrarse</p>
                     </li>
                 </ul>
             </div>
