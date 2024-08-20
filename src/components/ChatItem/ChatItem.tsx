@@ -1,21 +1,17 @@
-import { useState } from 'react'
 import styles from './ChatItem.module.css'
+import { ChatItemProps } from '../../types/chat.types'
 
-import avatar from '../../assets/avatar_1.jpg'
-
-const ChatItem = () => {
-
-    const [isClicked, setIsClicked] = useState(false)
+const ChatItem = ({ profileImage, username, message, clicked, handleSelectChat }: ChatItemProps) => {
 
     return (
         <div 
-            className={`${styles["chat-item-container"]} ${isClicked ? styles["item-clicked"] : ""}`}
-            onClick={() => setIsClicked(!isClicked)}
+            className={`${styles["chat-item-container"]} ${clicked ? styles["item-clicked"] : ""}`}
+            onClick={handleSelectChat}
         >
-            <img src={avatar} alt="foto" />
+            <img src={profileImage} alt="foto" />
             <div className={styles["chat-item-info"]}>
-                <p>Username</p>
-                <p>Message</p>
+                <p className={styles["chat-item-username"]}>{username}</p>
+                <p>{message}</p>
             </div>
         </div>
     )
