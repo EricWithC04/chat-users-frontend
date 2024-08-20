@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     background-color: #f8f8f8;
-    width: 300px;
+    width: 420px;
     outline: 2px solid black;
     border-radius: 18px;
 }
@@ -45,4 +45,11 @@
 .register-button:hover {
     cursor: pointer;
     background-color: #666;
+}
+
+.field-error {
+    color: white;
+    background-color: red;
+    padding: 3px;
+    border-radius: 3px;
 }
