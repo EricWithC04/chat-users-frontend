@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
+import io from 'socket.io-client'
 import styles from './ChatMessages.module.css'
+
+const socket = io('http://localhost:3001')
 
 const ChatMessages = () => {
 
@@ -56,6 +59,20 @@ const ChatMessages = () => {
         scrollToBottom()
     }, [messages])
 
+    useEffect(() => {
+        socket.emit('set name', prompt('Como te llamas?'))
+
+        socket.on('message', (data) => {
+            console.log(data);
+            
+            setMessages((prev) => [...prev, { sender: 2, content: data.message }])
+        })
+
+        return () => {
+            socket.off('message')
+        }
+    }, [])
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNewMessage(e.target.value)
     }
@@ -64,14 +81,18 @@ const ChatMessages = () => {
         e.preventDefault()
 
         if (newMessage.length > 0) {
-            setMessages([...messages, {
-                sender: 2,
-                content: newMessage
-            }])
+            // setMessages([...messages, {
+            //     sender: 2,
+            //     content: newMessage
+            // }])
+            sendMessage()
             setNewMessage("")
-
         }
     }
+
+    const sendMessage = () => {    
+        socket.emit('message', newMessage);
+    };
 
     return (
         <div className={styles['messages-container']}>
